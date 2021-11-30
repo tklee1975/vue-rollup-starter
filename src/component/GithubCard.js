@@ -42,9 +42,7 @@ const GithubCard = {
     <h4>Github Profile</h4>
     <div><img :src="githubProfile.avatar_url" style="display:block;width:100%; height:100%"/></div>
     <div style='background:#000;color:#fff;text-align:center; padding:10px;'><b>{{githubProfile.name}}</b></div>
-    <div style='background:#ccf; padding:10px;'><b>{{githubProfile.name}}</b></div>
-    <pre>{{githubProfile}}
-    </pre>
+    
     </div>
 	`
 };
