@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vue3 & Rollup Demo</title>
+    <style>
+        [v-cloak] {
+            display:none;
+        }
+        body {
+            font-family: arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vue3 + Rollup Demo</h1>
+    <hr>
+    <div v-cloak id="app">
+        <h3>1. Simple Component</h3>
+        <simple-component></simple-component>
+
+        <hr> 
+
+        <h3>2. Component with property</h3>
+        <display-heading heading="Testing Heading"></display-heading>
+
+        <hr> 
+
+        <h3>Color Palette - properties with internal component</h3>
+        <color-palette></color-palette>
+
+        <hr> 
+
+        <h3>Color Label - Using 3rd parties library 'colord' </h3>
+        <color-label color='#000'></color-label>
+        <color-label color='#EEE'></color-label>
+
+        <hr> 
+        <h3>Color Table - using external component</h3>
+        <color-table :color-list="colorList"></color-table>
+
+        <hr> 
+        <h3>Github Profile - calling API </h3>
+        <github-card username="mojombo"></github-card>
+    </div>
+
+    
+
+
+    <!-- Script -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="vue-components.js"></script>
+
+    <script>
+        const vueContext = {
+            components: {
+                'SimpleComponent': vueLib.SimpleComponent,
+                'DisplayHeading': vueLib.DisplayHeading,
+                'ColorPalette' : vueLib.ColorPalette,
+                'ColorLabel' : vueLib.ColorLabel,
+                'ColorTable' : vueLib.ColorTable,
+                'GithubCard' : vueLib.GithubCard
+            },
+            data() {
+                return {
+                    colorList: [
+                        "#0FF", "#0F0", "#0AA",
+                    ],
+                }
+            }, 
+        };
+
+
+        Vue.createApp(vueContext).mount('#app')
+    </script>
+</body>
+</html>
